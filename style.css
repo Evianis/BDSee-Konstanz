@@ -761,4 +761,14 @@ body::after {
   pointer-events: none;
 }
 
+nav a.nav-active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  border: 1px solid rgba(148,163,184,0.4);
+  box-shadow:
+    0 0 0 1px rgba(148,163,184,0.3),
+    0 10px 22px rgba(15,23,42,0.12);
+  transform: translateY(-1px);
+}
 
