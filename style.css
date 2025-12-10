@@ -118,16 +118,37 @@ nav a:hover {
 .hero::after {
   content: "";
   position: absolute;
-  right: -120px;
-  top: 30%;
-  width: 280px;
-  height: 280px;
+  right: -200px;       /* 往右移出更多，让光从外部扩散 */
+  top: 20%;
+  width: 520px;        /* 光范围更大 */
+  height: 520px; 
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(90,150,255,0.40) 0%, transparent 70%);
-  filter: blur(8px);
+  background: radial-gradient(circle,
+    rgba(90,150,255,0.22) 0%,
+    rgba(90,150,255,0.10) 35%,
+    transparent 70%
+  );
+  filter: blur(40px);  /* 模糊更强 → 更柔和 */
   pointer-events: none;
   z-index: 0;
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  left: -180px;
+  bottom: 20%;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(100,140,255,0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 .hero-inner {
   position: relative;
