@@ -291,12 +291,33 @@ h2.section-title {
 .tag {
   display: inline-block;
   font-size: 11px;
-  padding: 2px 8px;
+  padding: 4px 10px;
   border-radius: 999px;
-  background: #eef3f8;
-  margin-right: 4px;
-  margin-bottom: 4px;
+
+  /* 浅亮蓝色背景（适合深色底） */
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+
+  /* 深蓝字体，高对比度 */
+  color: #0b2540;
+
+  margin-right: 6px;
+  margin-bottom: 6px;
+
+  /* 微光科技边框 */
+  border: 1px solid rgba(255,255,255,0.35);
+
+  /* hover 效果（更有科技感） */
+  transition: all 0.25s ease;
 }
+
+.tag:hover {
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(255,255,255,0.75);
+  color: #061524;
+  transform: translateY(-2px);
+}
+
 
 /* 合作流程 */
 .steps {
