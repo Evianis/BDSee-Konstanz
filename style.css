@@ -675,36 +675,43 @@ body::after {
   );
 }
 
+
 /* =========================================
-   Apple 风格：白银质感背景（Platinum Silver）
+   Apple Style — Aurora Silver 极光银背景
    ========================================= */
 
 body {
   background: linear-gradient(
       180deg,
-      #f5f5f7 0%,
-      #fafafa 40%,
-      #f2f3f5 100%
-    );
+      #eef1f7 0%,     /* 顶部冷淡银 */
+      #f3f6fa 35%,    /* 中段极光亮银 */
+      #e8ecf3 100%    /* 底部蓝调银 */
+  );
 }
 
-/* 更细腻的银灰纹理（极轻微的噪点感） */
+/* 极光银金属柔光纹理（超轻分布） */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
+
   background-image:
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35) 0%, transparent 60%),
-    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.25) 0%, transparent 75%),
+    /* 极光银光晕：淡蓝白柔光 */
+    radial-gradient(circle at 30% 20%, rgba(200,220,255,0.25) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(210,230,255,0.20) 0%, transparent 75%),
+
+    /* 细腻银纹：几乎不可见，但能提升质感 */
     repeating-linear-gradient(
       135deg,
-      rgba(255,255,255,0.06) 0px,
-      rgba(255,255,255,0.06) 1px,
-      rgba(245,245,247,0.06) 2px,
-      rgba(245,245,247,0.06) 3px
+      rgba(255,255,255,0.04) 0px,
+      rgba(255,255,255,0.04) 1px,
+      rgba(230,235,245,0.04) 2px,
+      rgba(230,235,245,0.04) 3px
     );
-  mix-blend-mode: overlay; /* Apple 的银灰层叠风格 */
+
+  mix-blend-mode: soft-light;  /* 让底色呈现 Apple 式金属感 */
   pointer-events: none;
 }
+
 
