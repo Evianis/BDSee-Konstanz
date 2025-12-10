@@ -275,19 +275,47 @@ h2.section-title {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
 }
+/* 深色模式下的卡片（自动适配） */
 .card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px 16px 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.06);   /* 半透明深色玻璃 */
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+
+  color: #e9f2ff;                      /* 正文颜色：亮蓝白，可读性极高 */
   font-size: 14px;
 }
+
+/* 标题颜色加强：亮一点，同时突出层级 */
 .card h3 {
   margin-top: 0;
-  margin-bottom: 6px;
-  font-size: 16px;
-  color: var(--primary);
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;                      /* 卡片标题统一亮白 */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+
+/* 正文文本颜色改亮 */
+.card p {
+  color: #cfe0f5;                      /* 轻蓝白，比标题弱一级 */
+  line-height: 1.7;
+}
+
+/* 卡片中的链接 */
+.card a {
+  color: #5ab4ff;                      /* 明亮科技蓝（可读性强） */
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.card a:hover {
+  color: #8cd1ff;                      /* hover 更亮一点 */
+  text-shadow: 0 0 8px rgba(90,180,255,0.6);
+}
+
 .tag {
   display: inline-block;
   font-size: 11px;
