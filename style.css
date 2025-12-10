@@ -836,7 +836,6 @@ body::after {
 /* =========================
    顶部 Konstanz 背景 + 搜索框
    ========================= */
-
 /* 外层背景，用在 <section class="hero-konz"> */
 .hero-konz {
   position: relative;
@@ -844,13 +843,46 @@ body::after {
   border-radius: 0 0 32px 32px;
   overflow: hidden;
 
+  /* 固定的冷色科技渐变背景（保留原来的感觉） */
   background:
     radial-gradient(circle at 10% 0%, rgba(135,170,255,0.35) 0, transparent 55%),
     radial-gradient(circle at 90% 40%, rgba(110,160,255,0.32) 0, transparent 60%),
-    linear-gradient(180deg, rgba(245,247,252,0.96) 0%, rgba(232,238,248,0.98) 45%, #f5f7fb 100%),
-    url("konstanz1.png") center/cover no-repeat;
+    linear-gradient(180deg, rgba(245,247,252,0.96) 0%, rgba(232,238,248,0.98) 45%, #f5f7fb 100%);
 
+  /* 让整块像一块大屏幕 */
   box-shadow: 0 22px 45px rgba(5, 20, 60, 0.18);
+}
+
+/* 轮播背景层：放在渐变上面 */
+.hero-konz::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* 在内容后面，但在 body 背景前面 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: heroBgSlide 10.5s infinite; /* 3 张图 × 3.5 秒 = 10.5 秒一轮 */
+  opacity: 1;
+}
+
+/* 背景轮播关键帧：每 3.5 秒切一张 */
+@keyframes heroBgSlide {
+
+  /* 第 1 张：0s ~ 3.5s */
+  0%   { background-image: url("konstanz1.png"); opacity: 1; }
+  28%  { background-image: url("konstanz1.png"); opacity: 1; }
+
+  /* 过渡到第 2 张：3.5s ~ 7s */
+  33%  { background-image: url("st.png"); opacity: 0.45; }
+  61%  { background-image: url("st.png"); opacity: 1; }
+
+  /* 过渡到第 3 张：7s ~ 10.5s */
+  66%  { background-image: url("kache.jpg"); opacity: 0.45; }
+  95%  { background-image: url("kache.jpg"); opacity: 1; }
+
+  /* 回到第 1 张准备下一轮 */
+  100% { background-image: url("konstanz1.png"); opacity: 1; }
 }
 
 /* 搜索区域标题 */
@@ -1008,3 +1040,4 @@ body::after {
     max-width: 100%;
   }
 }
+
