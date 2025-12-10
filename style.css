@@ -891,10 +891,10 @@ body::after {
     background-image: url("konstanz1.png");
   }
   33%, 61% {
-    background-image: url("konstanz2.png");
+    background-image: url("st.png");
   }
   66%, 95% {
-    background-image: url("konstanz3.png");
+    background-image: url("kache.jpg");
   }
   100% {
     background-image: url("konstanz1.png");
