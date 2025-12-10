@@ -615,42 +615,63 @@ footer {
   }
 }
 /* =========================
-   全局背景柔光蓝（防止断层）
+   全局背景三光源柔和蓝
    ========================= */
+
+/* 让 html / body 可以挂全局背景层 */
+html, body {
+  position: relative;
+}
+
+/* 三个全局光源的公共样式 */
+html::before,
 body::before,
 body::after {
   content: "";
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: clamp(380px, 40vw, 620px);
+  height: clamp(380px, 40vw, 620px);
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
   filter: blur(60px);
-  opacity: 0.55;
 }
 
-/* 中央偏右的柔光蓝（修复你的蓝色断层） */
+/* 左侧光源：偏淡、打亮左侧背景 */
 body::before {
-  right: 10%;
+  left: -10%;
   top: 25%;
   background: radial-gradient(
     circle,
-    rgba(135,170,255,0.28) 0%,
-    rgba(135,170,255,0.15) 40%,
+    rgba(135,170,255,0.22) 0%,
+    rgba(135,170,255,0.10) 40%,
     transparent 80%
   );
 }
 
-/* 底部偏左的浅蓝光增强整体层次 */
-body::after {
-  left: 5%;
-  bottom: 10%;
+/* 中央光源：轻微重点，连接上下区块 */
+html::before {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
   background: radial-gradient(
     circle,
-    rgba(180,200,255,0.20) 0%,
-    rgba(180,200,255,0.12) 40%,
+    rgba(160,190,255,0.28) 0%,
+    rgba(160,190,255,0.15) 40%,
     transparent 80%
   );
 }
+
+/* 右侧光源：比左稍强一点，保持你原本的右侧科技感 */
+body::after {
+  right: -8%;
+  top: 20%;
+  background: radial-gradient(
+    circle,
+    rgba(120,165,255,0.30) 0%,
+    rgba(120,165,255,0.16) 40%,
+    transparent 80%
+  );
+}
+
 
