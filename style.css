@@ -51,41 +51,27 @@ nav a:hover {
 
 
 /* 头图区域：深色科技感背景，保证文字清晰 */
-.hero {
-  /* 头图背景光效装饰 */
+/* 头图区域：深色科技感背景 */
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a1f33 0%, #0b3c5d 40%, #1f6fb8 100%);
-  color: #fff;
-  padding: 80px 20px 60px;
+
+  /* 深色科技风渐变背景 */
+  background: linear-gradient(
+      135deg,
+      #061522 0%,   /* 深黑蓝 */
+      #0b2d47 35%,  /* 深蓝 */
+      #1a5fa8 100%  /* 科技蓝 */
+  );
+
+  color: #ffffff;
+  padding: 80px 20px 80px;
 }
 
-
-.hero::after {
-  content: "";
-  position: absolute;
-  right: -120px;
-  bottom: -120px;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 0 40px rgba(0,188,255,0.35);
-  pointer-events: none;
-}
-
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 10% 0%, #1f6fb8 0%, #0b3c5d 35%, #020b18 100%);
-  color: #fff;
-  padding: 70px 20px 50px;
-}
-
+/* 内容层保持独立 */
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
@@ -94,15 +80,54 @@ nav a:hover {
   align-items: center;
 }
 
+/* 标题清晰发光，专业感强 */
 .hero h1 {
-  color: #0b3c5d;
-  text-shadow: none;
+  font-size: 32px;
+  margin: 0 0 12px;
+  font-weight: 700;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.55), 
+               0 0 12px rgba(255,255,255,0.35);
 }
 
+/* 副标题增强可读性 */
 .hero p {
-  color: #333;
-  text-shadow: none;
+  font-size: 16px;
+  opacity: 0.95;
+  margin: 0 0 18px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
+
+/* 科技光效 — 右侧蓝色能量环 */
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  width: 380px;
+  height: 380px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: 2px solid rgba(0,170,255,0.25);
+  box-shadow: 0 0 120px rgba(0,160,255,0.45),
+              inset 0 0 80px rgba(0,160,255,0.25);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 左上角科技白光 */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: -120px;
+  top: -120px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 1;
+}
+
 
 
 .badge {
