@@ -209,6 +209,64 @@
     }
   });
 </script>
+<script>
+  function handleHeroSearch(event) {
+    event.preventDefault();
+
+    var input = document.getElementById("hero-search-input");
+    if (!input) return false;
+
+    var q = input.value.trim().toLowerCase();
+
+    // 关键词与对应板块
+    var routes = [
+      {
+        target: "#warehouse",
+        keywords: ["海外仓", "仓库", "仓储", "warehouse"]
+      },
+      {
+        target: "#logistics",
+        keywords: ["物流", "运输", "干线", "路线", "物流流程"]
+      },
+      {
+        target: "#services",
+        keywords: ["平台", "入驻", "amazon", "otto", "kaufland", "mediamarkt", "电商", "运营"]
+      },
+      {
+        target: "#contact",
+        keywords: ["联系", "电话", "email", "邮箱", "wechat", "whatsapp", "咨询"]
+      }
+    ];
+
+    // 如果输入为空，直接滚到核心服务
+    if (!q) {
+      smoothGoTo("#services");
+      return false;
+    }
+
+    // 遍历匹配
+    for (var i = 0; i < routes.length; i++) {
+      var r = routes[i];
+      for (var j = 0; j < r.keywords.length; j++) {
+        if (q.indexOf(r.keywords[j].toLowerCase()) !== -1) {
+          smoothGoTo(r.target);
+          return false;
+        }
+      }
+    }
+
+    // 没匹配到 → 默认跳到核心服务
+    smoothGoTo("#services");
+    return false;
+  }
+
+  function smoothGoTo(selector) {
+    var el = document.querySelector(selector);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+</script>
 
 </body>
 </html>
