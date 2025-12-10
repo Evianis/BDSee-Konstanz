@@ -100,14 +100,23 @@ nav a:hover {
   color: var(--brand-primary);
 }
 
-/* =========================
-   Hero 区：浅色 Apple 风
-   ========================= */
+
 .hero {
   position: relative;
-  padding: 72px 20px 72px;
-  background: radial-gradient(circle at top, #ffffff 0, #f5f5f7 45%, #f0f0f5 100%);
+  overflow: hidden;
+  padding: 80px 20px 80px;
+
+  /* Apple 风淡雅蓝色渐变 */
+  background: linear-gradient(
+    135deg,
+    #e8f1ff 0%,
+    #f7faff 30%,
+    #ffffff 60%
+  );
+
+  color: #1a1a1a;
 }
+
 
 .hero-inner {
   max-width: 1100px;
