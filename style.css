@@ -394,42 +394,90 @@ h2.section-title {
 }
 
 /* 科技感卡片：渐变描边 + 悬浮效果 */
-.card {
-  border-radius: var(--radius-lg);
-  padding: 18px 18px 16px;
+/* =========================
+   小屏幕卡片（核心业务 & 快速了解）
+   ========================= */
 
-  /* 渐变描边 + 白底 */
-  border: 1px solid transparent;
-  background-image:
-    linear-gradient(#ffffff, #ffffff),
-    linear-gradient(135deg, rgba(148,197,255,0.7), rgba(226,232,255,0.9));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+/* 统一把这两种卡片做成“小屏” */
+.card,
+.quick-link-card {
+  position: relative;
+  overflow: hidden;
 
-  box-shadow: 0 12px 28px rgba(15,23,42,0.06);
+  background: radial-gradient(circle at 20% 0%,
+              rgba(255,255,255,0.95) 0%,
+              #f6f8fd 40%,
+              #edf1f9 100%);
+
+  border-radius: 22px;
+  padding: 18px 20px 18px;
+
+  border: 1px solid rgba(192,204,224,0.9);
+  box-shadow:
+    0 16px 35px rgba(15,23,42,0.10),
+    0 0 0 1px rgba(255,255,255,0.9);
+
   font-size: 14px;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(15,23,42,0.11);
+/* 顶部轻高光（像小屏幕上方反光） */
+.card::before,
+.quick-link-card::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: -26px;
+  height: 56px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.85) 0%,
+    rgba(255,255,255,0.40) 45%,
+    rgba(255,255,255,0.0) 100%
+  );
+  opacity: 0.9;
+  pointer-events: none;
 }
 
-.card h3 {
+/* 底部一点点暗角，让卡片更“立体” */
+.card::after,
+.quick-link-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  height: 80px;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(15,23,42,0.14) 0%,
+    rgba(15,23,42,0.04) 55%,
+    transparent 100%
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* 标题和正文在小屏里稍微深一点，方便阅读 */
+.card h3,
+.quick-link-card h3 {
   margin-top: 0;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: 16px;
-  color: #111111;
+  font-weight: 600;
+  color: #0f172a;
   letter-spacing: -0.01em;
 }
 
-.card p {
-  color: #3a3a3c;
+.card p,
+.quick-link-card p {
+  color: #4b5563;
   line-height: 1.7;
 }
 
-/* 卡片中的链接（首页快速入口用） */
+/* 卡片里的“进入 XXX →” 链接也稍微强调一下 */
 .card a,
 .quick-link-card a {
   color: var(--brand-primary);
@@ -441,6 +489,7 @@ h2.section-title {
 .quick-link-card a:hover {
   text-decoration: underline;
 }
+
 
 /* 标签：蓝色渐变小胶囊 */
 .tag {
