@@ -53,14 +53,14 @@ nav a:hover {
 /* 头图区域：深色科技感背景，保证文字清晰 */
 .hero {
   /* 头图背景光效装饰 */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -80px;
-  background:
-    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05) 0, transparent 55%);
-  pointer-events: none;
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1f33 0%, #0b3c5d 40%, #1f6fb8 100%);
+  color: #fff;
+  padding: 80px 20px 60px;
 }
+
 
 .hero::after {
   content: "";
