@@ -167,5 +167,24 @@
     <div class="fc-main">聊聊合作</div>
     <div class="fc-sub">WhatsApp / WeChat: +49 172 526 6484</div>
   </a>
+  <script>
+  // 自动高亮正在访问的页面
+  const currentPage = location.pathname.split("/").pop(); // 获取当前文件名
+
+  document.querySelectorAll("nav a").forEach(link => {
+    const linkPage = link.getAttribute("href");
+
+    // 首页特殊处理：#top 或 index.html
+    if ((currentPage === "" || currentPage === "index.html") && linkPage === "#top") {
+      link.classList.add("nav-active");
+    }
+
+    // 其他页面：URL 文件名匹配
+    if (linkPage === currentPage) {
+      link.classList.add("nav-active");
+    }
+  });
+</script>
+
 </body>
 </html>
