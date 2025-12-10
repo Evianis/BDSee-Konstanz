@@ -42,7 +42,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Segoe UI", Arial, sans-serif;
   color: var(--color-text);
-  background: var(--color-bg);
   line-height: 1.6;
 }
 
@@ -93,15 +92,12 @@ header {
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.5px;
-
   font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
   color: #0a1b2f; /* 深邃科技蓝 */
   text-shadow:
-      0 1px 2px rgba(0,0,0,0.15),
-      0 0 6px rgba(120,160,255,0.35); /* 微光科技感 */
+    0 1px 2px rgba(0,0,0,0.15),
+    0 0 6px rgba(120,160,255,0.35);
 }
-
 
 /* 右侧导航区域 */
 nav {
@@ -122,7 +118,6 @@ nav a {
   color: #1f2933;
   opacity: 0.9;
 
-  text-decoration: none;
   transition:
     background 0.18s ease,
     color 0.18s ease,
@@ -139,53 +134,49 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
-/* 当前页面高亮（需要在 HTML 中给当前链接加 .nav-active） */
+/* 当前页面高亮（给当前链接加 .nav-active） */
 nav a.nav-active {
   background: #ffffff;
   color: #0f172a;
   font-weight: 600;
+  border: 1px solid rgba(148,163,184,0.4);
   box-shadow:
-    0 0 0 1px rgba(148,163,184,0.4),
+    0 0 0 1px rgba(148,163,184,0.3),
     0 10px 22px rgba(15,23,42,0.12);
+  transform: translateY(-1px);
 }
-
-
 
 /* =========================
    Hero 屏幕外壳（大屏质感）
    ========================= */
-
-/* 外层区域只负责留白和整体背景，不再当“屏幕”本体 */
 .hero {
   position: relative;
   padding: 70px 20px 60px;
-  background: transparent;   /* 让屏幕主体自己发光 */
+  background: transparent;
 }
 
-/* 中间这块就是“屏幕本体” */
+/* 屏幕本体 */
 .hero-screen {
   max-width: 1160px;
   margin: 0 auto;
   padding: 32px 36px;
   border-radius: 26px;
 
-  /* 屏幕主体颜色：极光银渐变 */
   background: radial-gradient(circle at 20% 0%,
               rgba(255,255,255,0.85) 0%,
               #f5f7fc 38%,
               #ecf1f9 100%);
 
-  /* 金属边框 + 外轮廓 */
   border: 1px solid rgba(190,200,220,0.7);
   box-shadow:
-    0 22px 60px rgba(15,23,42,0.18),         /* 屏幕下方投影 */
-    0 0 0 1px rgba(255,255,255,0.9);         /* 外圈高光 */
+    0 22px 60px rgba(15,23,42,0.18),
+    0 0 0 1px rgba(255,255,255,0.9);
 
   position: relative;
-  overflow: hidden;                          /* 让高光不溢出边缘 */
+  overflow: hidden;
 }
 
-/* 顶部高光反射（像屏幕上的一条灯光） */
+/* 顶部高光反射 */
 .hero-screen::before {
   content: "";
   position: absolute;
@@ -194,19 +185,17 @@ nav a.nav-active {
   top: -30px;
   height: 66px;
   border-radius: 999px;
-
   background: linear-gradient(
     180deg,
     rgba(255,255,255,0.75) 0%,
     rgba(255,255,255,0.40) 40%,
     rgba(255,255,255,0) 100%
   );
-
   opacity: 0.85;
   pointer-events: none;
 }
 
-/* 轻微底部暗角，让屏幕更立体 */
+/* 底部暗角 */
 .hero-screen::after {
   content: "";
   position: absolute;
@@ -223,10 +212,10 @@ nav a.nav-active {
   pointer-events: none;
 }
 
-/* 屏幕里的内容布局保持你原来的样式，只做一点点收紧 */
+/* 屏幕内容布局 */
 .hero-inner {
   position: relative;
-  z-index: 1;              /* 盖在高光之上 */
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: 32px;
@@ -234,7 +223,6 @@ nav a.nav-active {
   max-width: 100%;
 }
 
-/* 标题 / 文本在银色屏幕里稍微深一点 */
 .hero h1 {
   font-size: 32px;
   margin: 0 0 14px;
@@ -247,9 +235,6 @@ nav a.nav-active {
   font-size: 15px;
   color: #4b5563;
 }
-
-/* 右边的白卡片继续沿用之前的 hero-card 样式，无需改动 */
-
 
 .badge {
   display: inline-block;
@@ -265,7 +250,7 @@ nav a.nav-active {
   margin-top: 12px;
 }
 
-/* Hero 右侧信息卡片：玻璃 + 细边框 */
+/* Hero 右侧信息卡片 */
 .hero-card {
   background: rgba(255,255,255,0.95);
   border-radius: 20px;
@@ -322,7 +307,7 @@ nav a.nav-active {
   transform: translateY(-1px);
 }
 
-/* 次按钮：白底灰边 */
+/* 次按钮 */
 .btn-outline {
   border: 1px solid rgba(0,0,0,0.12);
   color: #1d1d1f;
@@ -374,7 +359,7 @@ h2.section-title {
   margin: 0 auto;
   max-width: 1200px;
   height: 220px;
-  top: 80px; /* 可根据视觉效果微调 */
+  top: 80px;
   background: radial-gradient(
     circle at 50% 0%,
     rgba(191, 219, 254, 0.55) 0%,
@@ -391,7 +376,7 @@ h2.section-title {
 }
 
 /* =========================
-   三列卡片（核心业务 / 信息块）
+   三列卡片（核心业务 / 快速了解）
    ========================= */
 .grid-3 {
   display: grid;
@@ -399,12 +384,7 @@ h2.section-title {
   gap: 18px;
 }
 
-/* 科技感卡片：渐变描边 + 悬浮效果 */
-/* =========================
-   小屏幕卡片（核心业务 & 快速了解）
-   ========================= */
-
-/* 统一把这两种卡片做成“小屏” */
+/* 小屏幕卡片：统一做成“小屏幕” */
 .card,
 .quick-link-card {
   position: relative;
@@ -426,7 +406,7 @@ h2.section-title {
   font-size: 14px;
 }
 
-/* 顶部轻高光（像小屏幕上方反光） */
+/* 顶部轻高光 */
 .card::before,
 .quick-link-card::before {
   content: "";
@@ -447,7 +427,7 @@ h2.section-title {
   pointer-events: none;
 }
 
-/* 底部一点点暗角，让卡片更“立体” */
+/* 底部暗角 */
 .card::after,
 .quick-link-card::after {
   content: "";
@@ -466,7 +446,7 @@ h2.section-title {
   pointer-events: none;
 }
 
-/* 标题和正文在小屏里稍微深一点，方便阅读 */
+/* 标题和正文 */
 .card h3,
 .quick-link-card h3 {
   margin-top: 0;
@@ -483,7 +463,7 @@ h2.section-title {
   line-height: 1.7;
 }
 
-/* 卡片里的“进入 XXX →” 链接也稍微强调一下 */
+/* 卡片里的链接 */
 .card a,
 .quick-link-card a {
   color: var(--brand-primary);
@@ -495,7 +475,6 @@ h2.section-title {
 .quick-link-card a:hover {
   text-decoration: underline;
 }
-
 
 /* 标签：蓝色渐变小胶囊 */
 .tag {
@@ -564,7 +543,7 @@ h2.section-title {
 }
 
 /* =========================
-   联系方式
+   联系方式（旧布局容器）
    ========================= */
 .contact-box {
   display: grid;
@@ -677,15 +656,6 @@ h2.section-title {
   gap: 18px;
 }
 
-.quick-link-card {  
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  padding: 16px;
-  box-shadow: var(--shadow-subtle);
-  border: 1px solid var(--color-border-subtle);
-  font-size: 14px;
-}
-
 /* =========================
    页脚
    ========================= */
@@ -727,19 +697,17 @@ footer {
   }
 }
 
-
 /* =========================
-   全局背景三光源：冷淡科技蓝版
+   全局背景三光源（左 + 中）+ 极光银
    ========================= */
 
 html, body {
   position: relative;
 }
 
-/* 公共设置：模糊柔光 */
+/* 公共设置：模糊柔光（html::before + body::before 两个光源） */
 html::before,
-body::before,
-body::after {
+body::before {
   content: "";
   position: fixed;
   width: clamp(360px, 36vw, 600px);
@@ -747,10 +715,10 @@ body::after {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  filter: blur(70px);  /* 更柔和 */
+  filter: blur(70px);
 }
 
-/* 左侧光源（最淡） */
+/* 左侧光源 */
 body::before {
   left: -12%;
   top: 28%;
@@ -762,7 +730,7 @@ body::before {
   );
 }
 
-/* 中间光源（冷蓝灰，轻轻提亮） */
+/* 中间光源 */
 html::before {
   left: 50%;
   top: 50%;
@@ -775,33 +743,17 @@ html::before {
   );
 }
 
-/* 右侧光源（冷色但最淡，避免太抢眼） */
-body::after {
-  right: -10%;
-  top: 22%;
-  background: radial-gradient(
-    circle,
-    rgba(170,195,255,0.12) 0%,
-    rgba(155,180,240,0.07) 35%,
-    transparent 80%
-  );
-}
-
-
-/* =========================================
-   Apple Style — Aurora Silver 极光银背景
-   ========================================= */
-
+/* 极光银背景主色 */
 body {
   background: linear-gradient(
       180deg,
-      #eef1f7 0%,     /* 顶部冷淡银 */
-      #f3f6fa 35%,    /* 中段极光亮银 */
-      #e8ecf3 100%    /* 底部蓝调银 */
+      #eef1f7 0%,
+      #f3f6fa 35%,
+      #e8ecf3 100%
   );
 }
 
-/* 极光银金属柔光纹理（超轻分布） */
+/* 极光银金属柔光纹理 */
 body::after {
   content: "";
   position: fixed;
@@ -809,11 +761,8 @@ body::after {
   z-index: -2;
 
   background-image:
-    /* 极光银光晕：淡蓝白柔光 */
     radial-gradient(circle at 30% 20%, rgba(200,220,255,0.25) 0%, transparent 60%),
     radial-gradient(circle at 70% 80%, rgba(210,230,255,0.20) 0%, transparent 75%),
-
-    /* 细腻银纹：几乎不可见，但能提升质感 */
     repeating-linear-gradient(
       135deg,
       rgba(255,255,255,0.04) 0px,
@@ -822,19 +771,8 @@ body::after {
       rgba(230,235,245,0.04) 3px
     );
 
-  mix-blend-mode: soft-light;  /* 让底色呈现 Apple 式金属感 */
+  mix-blend-mode: soft-light;
   pointer-events: none;
-}
-
-nav a.nav-active {
-  background: #ffffff;
-  color: #0f172a;
-  font-weight: 600;
-  border: 1px solid rgba(148,163,184,0.4);
-  box-shadow:
-    0 0 0 1px rgba(148,163,184,0.3),
-    0 10px 22px rgba(15,23,42,0.12);
-  transform: translateY(-1px);
 }
 
 /* =========================
@@ -867,38 +805,57 @@ nav a.nav-active {
   margin-bottom: 24px;
 }
 
-.contact-list {
+.contact-section .contact-list {
   font-size: 15px;
   line-height: 1.9;
   color: #1d1d1f;
   margin-bottom: 15px;
 }
 
-.contact-list .label {
+.contact-section .contact-list .label {
   display: inline-block;
   width: 60px;
   font-weight: 600;
   color: #0b1a2e;
 }
 
-.contact-note {
+.contact-section .contact-note {
   margin-top: 10px;
   font-size: 13px;
   color: #6e6e73;
 }
-.contact-note a {
+.contact-section .contact-note a {
   color: #0071e3;
   text-decoration: none;
   font-weight: 500;
 }
-.contact-note a:hover {
+.contact-section .contact-note a:hover {
   text-decoration: underline;
 }
 
+/* =========================
+   顶部 Konstanz 背景 + 搜索框
+   ========================= */
 
-/* Hero 标题整体居中 */
+/* 外层背景，用在 <section class="hero-konz"> */
+.hero-konz {
+  position: relative;
+  width: 100%;
+  border-radius: 0 0 32px 32px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 10% 0%, rgba(135,170,255,0.35) 0, transparent 55%),
+    radial-gradient(circle at 90% 40%, rgba(110,160,255,0.32) 0, transparent 60%),
+    linear-gradient(180deg, rgba(245,247,252,0.96) 0%, rgba(232,238,248,0.98) 45%, #f5f7fb 100%),
+    url("konstanz1.png") center/cover no-repeat;
+
+  box-shadow: 0 22px 45px rgba(5, 20, 60, 0.18);
+}
+
+/* 搜索区域标题 */
 .hero-intro {
-  padding: 60px 20px 40px;
+  padding: 64px 20px 60px;
   text-align: center;
 }
 
@@ -916,14 +873,14 @@ nav a.nav-active {
   color: #6e6e73;
 }
 
-/* 搜索框外层：让它在整行中居中 */
+/* 搜索框外层：在整行居中 */
 .hero-search-wrapper {
   margin-top: 26px;
   display: flex;
   justify-content: center;
 }
 
-/* 表单本身只是包裹作用 */
+/* 表单包裹 */
 .hero-search {
   width: 100%;
   max-width: 520px;
@@ -1042,7 +999,7 @@ nav a.nav-active {
   }
 }
 
-/* 手机端：略缩小一点 */
+/* 手机端搜索标题略缩小 */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 24px;
@@ -1051,28 +1008,3 @@ nav a.nav-active {
     max-width: 100%;
   }
 }
-
-/* 顶部 Konstanz 背景 + 科技渐变 */
-.hero-konz {
-  position: relative;
-  width: 100%;
-  border-radius: 0 0 32px 32px;
-  overflow: hidden;
-
-  /* 组合：Konstanz 图片 + 冷色渐变 + 微光 */
-  background:
-    radial-gradient(circle at 10% 0%, rgba(135,170,255,0.35) 0, transparent 55%),
-    radial-gradient(circle at 90% 40%, rgba(110,160,255,0.32) 0, transparent 60%),
-    linear-gradient(180deg, rgba(245,247,252,0.96) 0%, rgba(232,238,248,0.98) 45%, #f5f7fb 100%),
-    url("konstanz1.png") center/cover no-repeat;
-
-  /* 轻微的底部阴影，让整块像一块屏幕 */
-  box-shadow: 0 22px 45px rgba(5, 20, 60, 0.18);
-}
-
-/* 内部内容稍微拉开一点高度，保证背景能露出来 */
-.hero-intro {
-  padding: 64px 20px 60px;
-  text-align: center;
-}
-
