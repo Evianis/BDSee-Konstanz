@@ -481,63 +481,7 @@ footer {
 /* =========================
    暗色模式（系统偏好）
    ========================= */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #000000;
-    --color-bg-soft: #111111;
-    --color-surface: #1c1c1e;
-    --color-border-subtle: rgba(255,255,255,0.08);
-    --color-text: #f5f5f7;
-    --color-muted: #a1a1a6;
 
-    --brand-primary: #0a84ff;
-    --brand-primary-soft: #409cff;
-    --brand-accent: #ff9f0a;
-    --brand-accent-2: #30d158;
-  }
-
-  body {
-    background: var(--color-bg);
-    color: var(--color-text);
-  }
-
-  header {
-    background: rgba(0,0,0,0.85);
-    border-bottom-color: rgba(255,255,255,0.08);
-  }
-
-  nav a {
-    color: #f5f5f7;
-  }
-
-  .hero {
-    background: radial-gradient(circle at top, #1c1c1e 0, #000000 60%);
-  }
-
-  .hero-card,
-  .card,
-  .quick-link-card,
-  .log-step {
-    background: var(--color-surface);
-    border-color: var(--color-border-subtle);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-  }
-
-  footer {
-    background: #000000;
-    color: #98989f;
-    border-top-color: rgba(255,255,255,0.08);
-  }
-
-  .tag {
-    background: #2c2c2e;
-    color: #f5f5f7;
-  }
-
-  .floating-contact {
-    background: #0a84ff;
-  }
-}
 
 /* =========================
    响应式
