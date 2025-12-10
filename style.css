@@ -95,17 +95,15 @@ nav a:hover {
 }
 
 .hero h1 {
-  font-size: 30px;
-  margin: 0 0 12px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.55);
+  color: #0b3c5d;
+  text-shadow: none;
 }
 
 .hero p {
-  font-size: 15px;
-  opacity: 0.96;
-  margin: 0 0 16px;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+  color: #333;
+  text-shadow: none;
 }
+
 
 .badge {
   display: inline-block;
