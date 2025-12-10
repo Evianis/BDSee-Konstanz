@@ -22,10 +22,8 @@
   --radius-md: 12px;
   --shadow-soft: 0 18px 40px rgba(15,15,15,0.12);
   --shadow-subtle: 0 8px 20px rgba(0,0,0,0.06);
-}
 
-/* 兼容旧变量名 */
-:root {
+  /* 兼容旧变量名 */
   --primary: var(--brand-primary);
   --primary-light: var(--color-bg);
   --accent: var(--brand-accent);
@@ -100,7 +98,9 @@ nav a:hover {
   color: var(--brand-primary);
 }
 
-
+/* =========================
+   Hero：蓝色光晕 + 科技质感
+   ========================= */
 .hero {
   position: relative;
   overflow: hidden;
@@ -126,11 +126,12 @@ nav a:hover {
   background: radial-gradient(circle, rgba(90,150,255,0.40) 0%, transparent 70%);
   filter: blur(8px);
   pointer-events: none;
+  z-index: 0;
 }
 
-
-
 .hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
@@ -145,6 +146,19 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #111111;
+  position: relative;
+}
+
+/* Hero 标题下方渐变蓝基线 */
+.hero h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 120px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
 }
 
 .hero p {
@@ -210,17 +224,17 @@ nav a:hover {
     transform 0.15s ease;
 }
 
-/* 主按钮：蓝色填充，轻阴影 */
+/* 主按钮：蓝色渐变 + 轻阴影 */
 .btn-primary {
-  background: var(--brand-primary);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: #ffffff;
   font-weight: 500;
-  box-shadow: 0 10px 20px rgba(0,113,227,0.35);
+  box-shadow: 0 10px 20px rgba(59,130,246,0.35);
 }
 
 .btn-primary:hover {
-  background: var(--brand-primary-soft);
-  box-shadow: 0 14px 26px rgba(0,113,227,0.4);
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+  box-shadow: 0 14px 26px rgba(96,165,250,0.4);
   transform: translateY(-1px);
 }
 
@@ -262,6 +276,37 @@ h2.section-title {
 }
 
 /* =========================
+   “我们的核心业务”区：背后蓝色光带
+   ========================= */
+#services {
+  position: relative;
+  overflow: hidden;
+}
+
+#services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 220px;
+  top: 80px; /* 可根据视觉效果微调 */
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(191, 219, 254, 0.55) 0%,
+    transparent 65%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#services .section-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
    三列卡片（核心业务 / 信息块）
    ========================= */
 .grid-3 {
@@ -270,14 +315,27 @@ h2.section-title {
   gap: 18px;
 }
 
-/* Apple 风卡片 */
+/* 科技感卡片：渐变描边 + 悬浮效果 */
 .card {
-  background: var(--color-surface);
   border-radius: var(--radius-lg);
   padding: 18px 18px 16px;
-  box-shadow: var(--shadow-subtle);
-  border: 1px solid var(--color-border-subtle);
+
+  /* 渐变描边 + 白底 */
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(#ffffff, #ffffff),
+    linear-gradient(135deg, rgba(148,197,255,0.7), rgba(226,232,255,0.9));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  box-shadow: 0 12px 28px rgba(15,23,42,0.06);
   font-size: 14px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15,23,42,0.11);
 }
 
 .card h3 {
@@ -306,16 +364,24 @@ h2.section-title {
   text-decoration: underline;
 }
 
-/* 标签：浅灰圆角小胶囊 */
+/* 标签：蓝色渐变小胶囊 */
 .tag {
   display: inline-block;
   font-size: 11px;
-  padding: 3px 8px;
+  padding: 3px 10px;
   border-radius: 999px;
-  background: #f2f2f7;
-  color: #1d1d1f;
+  background: linear-gradient(135deg, #e5efff 0%, #f5f7ff 100%);
+  color: #1d3557;
   margin-right: 6px;
   margin-bottom: 6px;
+  border: 1px solid rgba(148,197,255,0.7);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.tag:hover {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0ecff 100%);
+  box-shadow: 0 4px 10px rgba(37,99,235,0.25);
+  transform: translateY(-1px);
 }
 
 /* =========================
@@ -478,7 +544,7 @@ h2.section-title {
   gap: 18px;
 }
 
-.quick-link-card {
+.quick-link-card {  
   background: #ffffff;
   border-radius: var(--radius-lg);
   padding: 16px;
@@ -498,11 +564,6 @@ footer {
   text-align: center;
   border-top: 1px solid rgba(0,0,0,0.06);
 }
-
-/* =========================
-   暗色模式（系统偏好）
-   ========================= */
-
 
 /* =========================
    响应式
