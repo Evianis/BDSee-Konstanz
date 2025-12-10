@@ -896,91 +896,159 @@ nav a.nav-active {
 }
 
 
-/* 顶部 Konstanz 全屏背景 */
+/* Hero 标题整体居中 */
+.hero-intro {
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: #111111;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+/* 搜索框外层：让它在整行中居中 */
+.hero-search-wrapper {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 表单本身只是包裹作用 */
 .hero-search {
-  position: relative;
   width: 100%;
-  height: 380px;
-  background: url("konstanz1.jpg") center/cover no-repeat;
+  max-width: 520px;
+}
+
+/* 玻璃拟态 + 粒子 + 光线扫描壳 */
+.search-shell {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 999px;
 
-  /* 顶部渐变叠加，让文字更清晰 */
-  background-blend-mode: overlay;
-  background-color: rgba(20,40,80,0.35);
+  background: radial-gradient(circle at 0% 0%, rgba(255,255,255,0.9) 0%, rgba(245,245,247,0.85) 50%, rgba(230,235,245,0.9) 100%);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 16px 40px rgba(15,40,80,0.18),
+    0 0 0 1px rgba(255,255,255,0.8);
 
-  border-radius: 0 0 32px 32px;
   overflow: hidden;
 }
 
-/* 中心内容 */
-.hero-search-inner {
-  text-align: center;
-  max-width: 720px;
-  padding: 0 20px;
-  z-index: 10;
+/* 背景粒子漂浮 */
+.search-shell::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(150,190,255,0.35) 0, transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(120,170,255,0.25) 0, transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  animation: heroParticles 18s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
-/* 标题 */
-.hero-search-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 4px 14px rgba(0,0,0,0.45);
+/* 光线扫描条 */
+.search-shell::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -60%;
+  width: 60%;
+  height: 180%;
+  background: linear-gradient(120deg,
+              transparent 0%,
+              rgba(255,255,255,0.9) 45%,
+              rgba(255,255,255,0.2) 60%,
+              transparent 100%);
+  opacity: 0.75;
+  mix-blend-mode: screen;
+  transform: translateX(0);
+  animation: heroLightScan 6s linear infinite;
+  pointer-events: none;
 }
 
-/* 副标题 */
-.hero-search-sub {
-  margin-top: 6px;
-  font-size: 15px;
-  color: #e6e8f0;
-  opacity: 0.95;
-  letter-spacing: 0.5px;
-}
-
-/* 玻璃拟态搜索框 */
-.search-box {
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(14px);
-  border-radius: 40px;
-  padding: 8px 12px;
-  box-shadow: 
-    0 8px 20px rgba(0,0,0,0.15),
-    inset 0 0 8px rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.35);
-}
-
-/* 输入框 */
-.search-box input {
+/* 输入框本体 */
+.search-shell input {
+  position: relative;
+  z-index: 1;
   flex: 1;
   border: none;
-  background: transparent;
-  font-size: 15px;
-  padding: 8px 12px;
-  color: #fff;
   outline: none;
+  background: transparent;
+  font-size: 14px;
+  padding: 6px 10px;
+  color: #111;
 }
 
-/* 搜索按钮 */
-.search-box button {
+.search-shell input::placeholder {
+  color: #a0a4b0;
+}
+
+/* 搜索按钮：蓝色胶囊 */
+.search-shell button {
+  position: relative;
+  z-index: 1;
   padding: 8px 20px;
-  border-radius: 50px;
+  border-radius: 999px;
   border: none;
-  background: #0a84ff;
-  color: white;
+  background: #0071e3;
+  color: #ffffff;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(10,132,255,0.35);
-  transition: 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0,113,227,0.35);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
 }
 
-.search-box button:hover {
-  background: #3aa0ff;
-  box-shadow: 0 6px 18px rgba(10,132,255,0.45);
+.search-shell button:hover {
+  background: #0a84ff;
+  box-shadow: 0 10px 26px rgba(0,133,247,0.45);
   transform: translateY(-1px);
 }
+
+/* 粒子动画 */
+@keyframes heroParticles {
+  0% {
+    transform: translate3d(-10px, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, -6px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-6px, 4px, 0) scale(1.01);
+  }
+}
+
+/* 光线扫描动画 */
+@keyframes heroLightScan {
+  0% {
+    transform: translateX(-140%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+/* 手机端：略缩小一点 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+  }
+  .hero-search {
+    max-width: 100%;
+  }
+}
+
