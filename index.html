@@ -242,6 +242,96 @@
       text-align: center;
     }
 
+    /* 物流流程模块 */
+    .logistics-flow {
+      background:#f7f9fb;
+    }
+    .logistics-steps {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:18px;
+    }
+    .log-step {
+      flex:1 1 220px;
+      background:#fff;
+      border-radius:12px;
+      padding:14px 14px 12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.04);
+      position:relative;
+      font-size:14px;
+    }
+    .log-step h3 {
+      margin:0 0 6px;
+      font-size:15px;
+      color:var(--primary);
+    }
+    .log-step .log-time {
+      font-size:12px;
+      color:#888;
+      margin-top:6px;
+    }
+    .log-note {
+      font-size:12px;
+      color:#777;
+      margin-top:10px;
+    }
+
+    /* 地图区域 */
+    .map-wrapper iframe {
+      width:100%;
+      min-height:280px;
+      border:0;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    /* 右下角悬浮联系按钮 */
+    .floating-contact {
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      background:var(--primary);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.25);
+      text-decoration:none;
+      z-index:50;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .floating-contact:hover {
+      background:#0e507a;
+    }
+    .floating-contact .fc-main {
+      font-weight:600;
+    }
+    .floating-contact .fc-sub {
+      font-size:11px;
+      opacity:0.85;
+    }
+
+    @media (max-width:768px) {
+      .logistics-steps {
+        flex-direction:column;
+      }
+      .floating-contact {
+        right:12px;
+        bottom:12px;
+        font-size:12px;
+        padding:8px 12px;
+      }
+      .floating-contact .fc-sub {
+        display:none;
+      }
+    }
+
+
+
+    
     @media (max-width: 768px) {
       .hero-inner, .contact-box {
         grid-template-columns: 1fr;
@@ -395,6 +485,7 @@
     </div>
   </section>
 
+
   <!-- 平台入驻模块 -->
   <section id="platforms">
     <div class="section-inner">
@@ -478,8 +569,72 @@
       </div>
     </div>
   </section>
+  
+  <!-- 仓储能力与数据指标 -->
+  <section style="padding:40px 20px;">
+    <div class="section-inner">
+      <h2 class="section-title">仓储能力与运营标准</h2>
+      <p class="section-subtitle">透明可量化的仓储数据，帮助客户快速判断合作适配度</p>
+  
+      <ul style="font-size:15px; line-height:1.9;">
+        <li><strong>操作时效：</strong>当日入库、当日上架（特殊情况除外）</li>
+        <li><strong>退货处理周期：</strong>1~2 个工作日内完成检查、拍照与反馈</li>
+        <li><strong>仓库类型：</strong>高位货架 / 地堆混合，可灵活组合</li>
+        <li><strong>安全管理：</strong>24 小时监控，门禁管理，消防标准齐全</li>
+        <li><strong>支持模式：</strong>一件代发 / 电商订单 / B2B 整托出货</li>
+        <li><strong>本地服务：</strong>德语 / 中文客服协助沟通物流与异常情况</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- 从中国到康斯坦茨的物流流程示意 -->
+  <section id="logistics" class="logistics-flow">
+    <div class="section-inner">
+      <h2 class="section-title">从中国到德国康斯坦茨的物流流程</h2>
+      <p class="section-subtitle">
+        典型路径示意：工厂 / 仓库 → 中国港口 → 欧洲港口 → 德国南部陆运 → 康斯坦茨海外仓
+      </p>
 
+      <div class="logistics-steps">
+        <div class="log-step">
+          <h3>01 中国工厂 / 仓库</h3>
+          <p>根据您的出货计划，将不同批次的货物集中至指定工厂或国内仓库，完成装箱与贴标。</p>
+          <div class="log-time">时效：视工厂分布与揽收方式而定</div>
+        </div>
+
+        <div class="log-step">
+          <h3>02 中国港口装柜</h3>
+          <p>在约定港口完成报关、装柜与放行，选择整柜或拼箱方式，平衡时效与成本。</p>
+          <div class="log-time">时效：报关+装柜一般为 1–3 个工作日</div>
+        </div>
+
+        <div class="log-step">
+          <h3>03 抵达欧洲港口</h3>
+          <p>船舶抵达荷兰、比利时、西班牙或法国等港口后，完成清关与换单，准备后续陆运。</p>
+          <div class="log-time">时效：海运时效依航线与船期而定</div>
+        </div>
+
+        <div class="log-step">
+          <h3>04 欧洲陆运至康斯坦茨</h3>
+          <p>通过卡车从南欧或西欧港口将货物直接运送至德国南部康斯坦茨地区仓库。</p>
+          <div class="log-time">时效：通常为 1–3 天左右</div>
+        </div>
+
+        <div class="log-step">
+          <h3>05 康斯坦茨海外仓入库</h3>
+          <p>完成卸货、点数、上架、系统登记后，即可根据电商订单或 B2B 需求进行发货。</p>
+          <div class="log-time">时效：1 个工作日内完成基础入库操作</div>
+        </div>
+      </div>
+
+      <p class="log-note">
+        注：以上流程为示意说明，具体路线、承运人与时间会根据实际出货港口、航线以及季节性因素进行调整，
+        详细方案可在沟通中单独确认。
+      </p>
+    </div>
+  </section>
+
+  
   <!-- 康斯坦茨海外仓优势 -->
   <section id="warehouse">
     <div class="section-inner">
@@ -530,6 +685,30 @@
     </div>
   </section>
 
+    <!-- Konstanz 地图位置 -->
+  <section id="map">
+    <div class="section-inner">
+      <h2 class="section-title">我们在德国康斯坦茨的位置</h2>
+      <p class="section-subtitle">
+        仓库与办公地址位于德国南部康斯坦茨，紧邻瑞士边境，便于辐射德南及周边国家市场。
+      </p>
+
+      <div class="map-wrapper">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Karl-Einhart-Str.+4,78467+Konstanz,Germany&output=embed">
+        </iframe>
+      </div>
+
+      <p style="font-size:12px; color:#777; margin-top:8px;">
+        如无法加载地图，可在 Google Maps 或其他地图应用中搜索：
+        “Karl-Einhart-Str. 4, 78467 Konstanz, Germany”。
+      </p>
+    </div>
+  </section>
+
+  
   <!-- 联系我们 -->
   <section id="contact">
     <div class="section-inner">
