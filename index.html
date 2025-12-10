@@ -4,743 +4,168 @@
   <meta charset="UTF-8" />
   <title>BDSee International Handels GmbH 德国康斯坦茨海外仓与电商运营</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BDSee International Handels GmbH 总部位于德国康斯坦茨，专注海外仓储、中德跨境电商、平台入驻与运营支持，为中国品牌提供一站式欧洲本地化服务。" />
-  <style>
-    :root {
-      --primary: #0b3c5d;
-      --primary-light: #f5f7fa;
-      --accent: #f5a623;
-      --text: #333;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: var(--text);
-      background: #ffffff;
-      line-height: 1.6;
-    }
-    a { text-decoration: none; color: inherit; }
-
-    /* 顶部导航 */
-    header {
-      background: var(--primary);
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
-    .logo {
-      font-size: 20px;
-      font-weight: 600;
-    }
-    nav a {
-      color: #fff;
-      margin-left: 18px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    nav a:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    /* 头图区域 */
-    .hero {
-      background: linear-gradient(135deg, #0b3c5d 0%, #143f69 40%, #ffffff 40%);
-      color: #fff;
-      padding: 60px 20px 40px;
-    }
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 30px;
-      align-items: center;
-    }
-    .hero h1 {
-      font-size: 30px;
-      margin: 0 0 12px;
-    }
-    .hero p {
-      font-size: 15px;
-      opacity: 0.95;
-      margin: 0 0 16px;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(0,0,0,0.18);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-    .hero-actions {
-      margin-top: 12px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      font-weight: 600;
-    }
-    .btn-outline {
-      border: 1px solid #fff;
-      color: #fff;
-      background: transparent;
-    }
-    .hero-card {
-      background: #fff;
-      color: #000;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      font-size: 13px;
-    }
-    .hero-card h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 16px;
-      color: var(--primary);
-    }
-    .hero-card ul {
-      padding-left: 18px;
-      margin: 6px 0;
-    }
-
-    /* 通用 section */
-    section {
-      padding: 40px 20px;
-    }
-    section:nth-of-type(odd) {
-      background: var(--primary-light);
-    }
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    h2.section-title {
-      font-size: 22px;
-      margin: 0 0 16px;
-      color: var(--primary);
-      border-left: 4px solid var(--primary);
-      padding-left: 8px;
-    }
-    .section-subtitle {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 18px;
-    }
-
-    /* 三列卡片 */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px 16px 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      font-size: 14px;
-    }
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 6px;
-      font-size: 16px;
-      color: var(--primary);
-    }
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #eef3f8;
-      margin-right: 4px;
-      margin-bottom: 4px;
-    }
-
-    /* 合作流程 */
-    .steps {
-      counter-reset: step;
-      padding-left: 0;
-      list-style: none;
-    }
-    .steps li {
-      position: relative;
-      padding-left: 40px;
-      margin-bottom: 12px;
-    }
-    .steps li::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #fff;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* FAQ */
-    .faq-item {
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-    .faq-q {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    /* 联系方式 */
-    .contact-box {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 20px;
-    }
-    .contact-list p {
-      margin: 4px 0;
-    }
-    .contact-note {
-      font-size: 13px;
-      color: #777;
-      margin-top: 10px;
-    }
-
-    footer {
-      background: #111;
-      color: #ccc;
-      padding: 18px 20px;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* 物流流程模块 */
-    .logistics-flow {
-      background:#f7f9fb;
-    }
-    .logistics-steps {
-      display:flex;
-      flex-wrap:wrap;
-      gap:16px;
-      margin-top:18px;
-    }
-    .log-step {
-      flex:1 1 220px;
-      background:#fff;
-      border-radius:12px;
-      padding:14px 14px 12px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.04);
-      position:relative;
-      font-size:14px;
-    }
-    .log-step h3 {
-      margin:0 0 6px;
-      font-size:15px;
-      color:var(--primary);
-    }
-    .log-step .log-time {
-      font-size:12px;
-      color:#888;
-      margin-top:6px;
-    }
-    .log-note {
-      font-size:12px;
-      color:#777;
-      margin-top:10px;
-    }
-
-    /* 地图区域 */
-    .map-wrapper iframe {
-      width:100%;
-      min-height:280px;
-      border:0;
-      border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.12);
-    }
-
-    /* 右下角悬浮联系按钮 */
-    .floating-contact {
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      background:var(--primary);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:13px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.25);
-      text-decoration:none;
-      z-index:50;
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-    .floating-contact:hover {
-      background:#0e507a;
-    }
-    .floating-contact .fc-main {
-      font-weight:600;
-    }
-    .floating-contact .fc-sub {
-      font-size:11px;
-      opacity:0.85;
-    }
-
-    @media (max-width:768px) {
-      .logistics-steps {
-        flex-direction:column;
-      }
-      .floating-contact {
-        right:12px;
-        bottom:12px;
-        font-size:12px;
-        padding:8px 12px;
-      }
-      .floating-contact .fc-sub {
-        display:none;
-      }
-    }
-
-
-
-    
-    @media (max-width: 768px) {
-      .hero-inner, .contact-box {
-        grid-template-columns: 1fr;
-      }
-      .hero {
-        background: var(--primary);
-      }
-      nav { display: none; } /* 手机端先简单隐藏导航 */
-    }
-  </style>
+  <meta name="description" content="BDSee 总部位于德国康斯坦茨，专注海外仓储、中欧物流与电商平台入驻运营，帮助中国品牌低门槛进入德国及欧洲市场。" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 顶部导航 -->
+  <!-- 顶部导航：多页面 -->
   <header>
     <div class="container nav">
       <div class="logo">BDSee International Handels GmbH</div>
       <nav>
-        <a href="#about">关于我们</a>
-        <a href="#services">核心服务</a>
-        <a href="#platforms">平台入驻</a>
-        <a href="#flow">合作流程</a>
-        <a href="#warehouse">康斯坦茨海外仓</a>
-        <a href="#contact">联系我们</a>
+        <a href="index.html">首页</a>
+        <a href="services.html">我们的业务</a>
+        <a href="location.html">区位优势</a>
+        <a href="warehouse.html">海外仓实景</a>
+        <a href="logistics.html">物流流程</a>
+        <a href="contact.html">联系我们</a>
       </nav>
     </div>
   </header>
 
-<!-- 头图区域 -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="badge">德国康斯坦茨·海外仓与电商本地化运营</div>
-      <h1>帮助中国品牌低门槛进入德国与欧洲市场</h1>
-      <p>
-        BDSee 总部位于德国康斯坦茨，依托本地化团队、稳定的仓储资源以及对平台规则的理解，
-        为中国企业提供从海运、海外仓、退换货处理，到 Amazon.de、OTTO、Kaufland、MediaMarkt 等平台
-        的一站式落地方案。
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">立即咨询合作</a>
-        <a href="#services" class="btn btn-outline">了解我们的服务</a>
+  <!-- 头图：一句话说明业务 + 科技感背景 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="badge">德国康斯坦茨 · 海外仓与电商本地化运营</div>
+        <h1>为中国品牌提供通往德国与欧洲市场的一站式通路</h1>
+        <p>
+          以德国康斯坦茨为基地，BDSee 将海外仓储、中欧干线物流与电商平台运营整合在一起，
+          让品牌可以从小批量试水，逐步放大销量，在控制成本的前提下稳步进入欧洲市场。
+        </p>
+        <div class="hero-actions">
+          <a href="services.html" class="btn btn-primary">了解我们的业务</a>
+          <a href="contact.html" class="btn btn-outline">咨询合作方案</a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-card">
-      <h3>为什么选择 BDSee？</h3>
-      <ul>
-        <li>德国本地公司，真实地址与团队，沟通直接高效；</li>
-        <li>熟悉中德沟通方式，支持中文/德文/英文对接；</li>
-        <li>可从小批量测试合作，逐步放大出货规模；</li>
-        <li>支持电商新手卖家，从 0 开始规划平台与合规路径。</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-<!-- Konstanz 城市风光展示 -->
-<section style="padding:30px 20px; text-align:center;">
-  <img src="konstanz1.png" alt="Konstanz City" 
-       style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15);">
-  <p style="font-size:12px; color:#666;">德国康斯坦茨城市风光</p>
-</section>
-
-
-  <!-- 关于我们 -->
-  <section id="about">
-    <div class="section-inner">
-      <h2 class="section-title">关于 BDSee</h2>
-      <p class="section-subtitle">德国本地公司 · 深耕中德跨境贸易与电商运营</p>
-      <p>
-        BDSee International Handels GmbH 成立于 2012 年，注册地位于德国康斯坦茨（Konstanz, Baden-Württemberg）。
-        多年来我们专注于中德贸易往来以及跨境电商，熟悉欧洲本地市场需求、电商平台规则以及
-        欧盟合规要求（如 EPR、WEEE、CE 等），致力于帮助中国企业用更低的试错成本走进欧洲市场。
-      </p>
-      <p>
-        <strong>公司地址：</strong>Karl-Einhart-Str. 4, Petershausen West, 78467 Konstanz, Germany<br />
-        <strong>服务区域：</strong>以德国为中心，辐射瑞士、奥地利、法国、意大利等周边市场。
-      </p>
+      <div class="hero-card">
+        <h3>我们主要做什么？</h3>
+        <ul>
+          <li>在德国南部提供本地海外仓与一件代发服务；</li>
+          <li>协助设计从中国到欧洲港口再到康斯坦茨的物流路径；</li>
+          <li>为电商新手提供 Amazon.de、OTTO、Kaufland、MediaMarkt 等平台建议；</li>
+          <li>帮助中国企业在欧洲市场更稳、更透明地展开业务。</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- 核心服务 -->
-  <section id="services">
+  <!-- 首页：三大核心业务总览 -->
+  <section>
     <div class="section-inner">
-      <h2 class="section-title">我们的核心服务</h2>
-      <p class="section-subtitle">根据品牌发展阶段灵活组合的服务模块</p>
+      <h2 class="section-title">我们的核心业务</h2>
+      <p class="section-subtitle">围绕“仓储 + 物流 + 平台”，为中国品牌提供可落地的欧洲本地化方案</p>
+
       <div class="grid-3">
         <div class="card">
           <h3>德国海外仓与本地仓储</h3>
-          <p>
-            提供入库、上架、分拣、贴标、打包、退货检测与再上架等完整仓储环节，
-            支持电商订单发货以及 B2B 批量出货。
-          </p>
-          <span class="tag">入库验货</span>
+          <p>在德国康斯坦茨提供入库、上架、分拣、贴标、打包、退货处理与再上架等服务，支持电商订单与 B2B 货物。</p>
           <span class="tag">一件代发</span>
-          <span class="tag">退货处理</span>
+          <span class="tag">B2B 托盘发货</span>
+          <span class="tag">退货检测</span>
         </div>
         <div class="card">
-          <h3>中欧物流与干线运输衔接</h3>
-          <p>
-            协助安排中国到欧洲的海运或铁运路线，从荷兰、比利时、西班牙、法国等港口落地，
-            再通过卡车快速送达德国南部康斯坦茨。
-          </p>
+          <h3>中欧干线物流与陆运衔接</h3>
+          <p>从中国港口到荷兰、比利时、西班牙或法国等欧洲港口，再通过卡车将货物送至德国南部康斯坦茨，实现时效与成本的平衡。</p>
           <span class="tag">整柜/拼箱</span>
-          <span class="tag">卡车中转</span>
-          <span class="tag">时效与成本平衡</span>
+          <span class="tag">港口中转</span>
+          <span class="tag">陆运直达</span>
         </div>
         <div class="card">
           <h3>电商平台入驻与运营支持</h3>
-          <p>
-            根据类目与品牌情况，规划 Amazon.de、OTTO、Kaufland、MediaMarkt 等平台的入驻路径，
-            并为电商新手提供运营建议与本地化支持。
-          </p>
-          <span class="tag">账号注册</span>
-          <span class="tag">资料梳理</span>
+          <p>为电商新手梳理 Amazon.de、OTTO、Kaufland、MediaMarkt 等平台的要求，协助准备资料、规划节奏和本地化展示。</p>
+          <span class="tag">平台入驻</span>
           <span class="tag">本地化建议</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- 为什么选择 BDSee -->
-  <section style="padding:40px 20px; background:#f7f9fb;">
-    <div class="section-inner">
-      <h2 class="section-title">为什么选择 BDSee？</h2>
-  
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-                  gap:18px; margin-top:20px;">
-  
-        <div class="card">
-          <h3>德国本地化运营</h3>
-          <p>团队长期驻扎德国南部，熟悉本地市场、电商平台规则与物流环境。</p>
-        </div>
-  
-        <div class="card">
-          <h3>可从小批量开始合作</h3>
-          <p>支持从小规模试水合作，逐步扩展，降低中国卖家的试错成本。</p>
-        </div>
-  
-        <div class="card">
-          <h3>跨境卖家的贴身伙伴</h3>
-          <p>不仅是仓库，更是陪伴卖家成长的运营伙伴，为新手提供完整指导。</p>
-        </div>
-  
-        <div class="card">
-          <h3>透明沟通与快速响应</h3>
-          <p>中英文双语沟通快速对接，每日定时同步仓库动态与异常信息。</p>
-        </div>
-  
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 平台入驻模块 -->
-  <section id="platforms">
-    <div class="section-inner">
-      <h2 class="section-title">平台入驻与运营支持</h2>
-      <p class="section-subtitle">适合没有经验或刚开始布局欧洲的中国品牌</p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Amazon.de</h3>
-          <p>
-            适合 3C 数码、小家电、灯具等产品。协助准备店铺资料、税号、品牌授权等，
-            并根据德国消费者习惯优化页面信息。
-          </p>
-        </div>
-        <div class="card">
-          <h3>OTTO · Kaufland 等平台</h3>
-          <p>
-            德国本地平台，规则与审核节奏不同于 Amazon。我们帮助企业理解各平台差异，
-            选择更合适的首发平台组合。
-          </p>
-        </div>
-        <div class="card">
-          <h3>MediaMarkt 等线下/线上渠道</h3>
-          <p>
-            针对有一定品牌基础的供应商，探索与大型零售渠道的合作可能，
-            在德国本地进行中长期品牌布局。
-          </p>
+          <span class="tag">长期合作</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 合作流程 -->
-  <section id="flow">
+  <!-- 首页：区位优势总览 + Konstanz 图 -->
+  <section>
     <div class="section-inner">
-      <h2 class="section-title">与 BDSee 的合作流程</h2>
-      <p class="section-subtitle">从沟通到落地，尽量减少您的试错成本</p>
-      <ol class="steps">
-        <li>
-          <strong>初步沟通需求</strong><br />
-          通过微信、邮件或电话介绍您的产品类型、出货节奏、目标平台与预算，我们会给出初步判断与建议。
-        </li>
-        <li>
-          <strong>方案与预算确认</strong><br />
-          根据您的优先目标（清库存、做品牌或测试市场），共同确认仓储、物流、平台入驻大致方案与费用区间。
-        </li>
-        <li>
-          <strong>样品与首批货物安排</strong><br />
-          先通过小批量测试仓储与发货流程，同时完善平台资料、合规文件与产品页面。
-        </li>
-        <li>
-          <strong>正式运营与数据反馈</strong><br />
-          在德国本地仓库稳定运转的前提下，逐步放大出货量，根据销售与退货情况调整策略。
-        </li>
-        <li>
-          <strong>长期合作与优化</strong><br />
-          持续优化库存结构、品类组合以及平台策略，探索更多国家与渠道的可能性。
-        </li>
-      </ol>
-    </div>
-  </section>
-  <!-- 仓库照片墙 -->
-  <section style="padding:40px 20px; background:#fafbfd;">
-    <div class="section-inner">
-      <h2 class="section-title">仓库实景展示</h2>
-      <p class="section-subtitle">干净 · 有序 · 高标准管理流程</p>
-  
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-                  gap:15px; margin-top:20px;">
-  
-        <img src="st.png" alt="BDSee Warehouse 1"
-             style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-  
-        <img src="st2.png" alt="BDSee Warehouse 2"
-             style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-  
-        <img src="st3.png" alt="BDSee Warehouse 3"
-             style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-        
-        <img src="st1.png" alt="BDSee Warehouse 3"
-             style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-      </div>
-    </div>
-  </section>
-  
-  <!-- 仓储能力与数据指标 -->
-  <section style="padding:40px 20px;">
-    <div class="section-inner">
-      <h2 class="section-title">仓储能力与运营标准</h2>
-      <p class="section-subtitle">透明可量化的仓储数据，帮助客户快速判断合作适配度</p>
-  
-      <ul style="font-size:15px; line-height:1.9;">
-        <li><strong>操作时效：</strong>当日入库、当日上架（特殊情况除外）</li>
-        <li><strong>退货处理周期：</strong>1~2 个工作日内完成检查、拍照与反馈</li>
-        <li><strong>仓库类型：</strong>高位货架 / 地堆混合，可灵活组合</li>
-        <li><strong>安全管理：</strong>24 小时监控，门禁管理，消防标准齐全</li>
-        <li><strong>支持模式：</strong>一件代发 / 电商订单 / B2B 整托出货</li>
-        <li><strong>本地服务：</strong>德语 / 中文客服协助沟通物流与异常情况</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 从中国到康斯坦茨的物流流程示意 -->
-  <section id="logistics" class="logistics-flow">
-    <div class="section-inner">
-      <h2 class="section-title">从中国到德国康斯坦茨的物流流程</h2>
+      <h2 class="section-title">为什么选择康斯坦茨？</h2>
       <p class="section-subtitle">
-        典型路径示意：工厂 / 仓库 → 中国港口 → 欧洲港口 → 德国南部陆运 → 康斯坦茨海外仓
+        位于德国南部，紧邻瑞士，连接德国、瑞士、奥地利与意大利等市场，是开展跨境电商与区域辐射的理想位置。
       </p>
 
-      <div class="logistics-steps">
-        <div class="log-step">
-          <h3>01 中国工厂 / 仓库</h3>
-          <p>根据您的出货计划，将不同批次的货物集中至指定工厂或国内仓库，完成装箱与贴标。</p>
-          <div class="log-time">时效：视工厂分布与揽收方式而定</div>
-        </div>
-
-        <div class="log-step">
-          <h3>02 中国港口装柜</h3>
-          <p>在约定港口完成报关、装柜与放行，选择整柜或拼箱方式，平衡时效与成本。</p>
-          <div class="log-time">时效：报关+装柜一般为 1–3 个工作日</div>
-        </div>
-
-        <div class="log-step">
-          <h3>03 抵达欧洲港口</h3>
-          <p>船舶抵达荷兰、比利时、西班牙或法国等港口后，完成清关与换单，准备后续陆运。</p>
-          <div class="log-time">时效：海运时效依航线与船期而定</div>
-        </div>
-
-        <div class="log-step">
-          <h3>04 欧洲陆运至康斯坦茨</h3>
-          <p>通过卡车从南欧或西欧港口将货物直接运送至德国南部康斯坦茨地区仓库。</p>
-          <div class="log-time">时效：通常为 1–3 天左右</div>
-        </div>
-
-        <div class="log-step">
-          <h3>05 康斯坦茨海外仓入库</h3>
-          <p>完成卸货、点数、上架、系统登记后，即可根据电商订单或 B2B 需求进行发货。</p>
-          <div class="log-time">时效：1 个工作日内完成基础入库操作</div>
-        </div>
-      </div>
-
-      <p class="log-note">
-        注：以上流程为示意说明，具体路线、承运人与时间会根据实际出货港口、航线以及季节性因素进行调整，
-        详细方案可在沟通中单独确认。
-      </p>
-    </div>
-  </section>
-
-  
-  <!-- 康斯坦茨海外仓优势 -->
-  <section id="warehouse">
-    <div class="section-inner">
-      <h2 class="section-title">德国康斯坦茨海外仓的区位优势</h2>
-      <p class="section-subtitle">连接德国南部 · 瑞士 · 奥地利 · 意大利等消费市场</p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>接近终端消费者</h3>
-          <p>
-            康斯坦茨位于德国南部，紧邻瑞士边境，可辐射德国南部大部分地区以及瑞士、奥地利、意大利北部等市场，
-            末端配送更灵活。
-          </p>
-        </div>
-        <div class="card">
-          <h3>海运+陆运组合灵活</h3>
-          <p>
-            货物可从荷兰、比利时、西班牙或法国港口登陆，再通过高速陆运接驳至康斯坦茨本地仓，
-            在时效与成本之间取得平衡。
-          </p>
-        </div>
-        <div class="card">
-          <h3>本地化运营团队</h3>
-          <p>
-            BDSee 团队常驻德国，对本地仓储管理、电商平台规则与消费者习惯有长期积累，
-            可为中国企业提供更接地气的建议与服务。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="section-inner">
-      <h2 class="section-title">常见问题（FAQ）</h2>
-      <div class="faq-item">
-        <div class="faq-q">Q：我们是电商新手，没有欧洲经验，也可以合作吗？</div>
-        <div>A：可以。我们可以从最基础的信息整理、平台理解、合规概念解释开始，帮助您一步步走稳。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：一定要一次性准备大量货物吗？</div>
-        <div>A：不一定。我们支持从小批量开始测试，包括几个托盘甚至更少，让您更安心地了解市场反馈。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">Q：可以只使用海外仓服务，不做平台运营合作吗？</div>
-        <div>A：可以。仓储、物流和平台支持是可以拆开组合的，您可以根据自己的团队情况灵活选择。</div>
-      </div>
-    </div>
-  </section>
-
-    <!-- Konstanz 地图位置 -->
-  <section id="map">
-    <div class="section-inner">
-      <h2 class="section-title">我们在德国康斯坦茨的位置</h2>
-      <p class="section-subtitle">
-        仓库与办公地址位于德国南部康斯坦茨，紧邻瑞士边境，便于辐射德南及周边国家市场。
-      </p>
-
-      <div class="map-wrapper">
-        <iframe
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Karl-Einhart-Str.+4,78467+Konstanz,Germany&output=embed">
-        </iframe>
-      </div>
-
-      <p style="font-size:12px; color:#777; margin-top:8px;">
-        如无法加载地图，可在 Google Maps 或其他地图应用中搜索：
-        “Karl-Einhart-Str. 4, 78467 Konstanz, Germany”。
-      </p>
-    </div>
-  </section>
-
-  
-  <!-- 联系我们 -->
-  <section id="contact">
-    <div class="section-inner">
-      <h2 class="section-title">联系我们</h2>
-      <p class="section-subtitle">欢迎通过中文、英文或德文与我们沟通</p>
-      <div class="contact-box">
-        <div class="contact-list">
-          <p><strong>公司：</strong>BDSee International Handels GmbH</p>
-          <p><strong>地址：</strong>Karl-Einhart-Str. 4, Petershausen West, 78467 Konstanz, Germany</p>
-          <p><strong>德国电话：</strong>+49 172 526 6484</p>
-          <p><strong>电子邮箱：</strong>philliperdbeere@gmail.com</p>
-          <p><strong>联系语言：</strong>中文 / Deutsch / English</p>
-          <p class="contact-note">
-            请在邮件中简单说明您的产品类型、预计出货量以及目前的销售渠道，我们会尽快回复您。
-          </p>
-        </div>
+      <div style="display:grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap:20px; align-items:center;">
         <div>
+          <ul style="line-height:1.9; font-size:14px;">
+            <li>靠近终端消费市场，末端配送距离更短，响应更快；</li>
+            <li>可从多个欧洲港口登陆，再通过高速陆运直达康斯坦茨；</li>
+            <li>连接德国南部、瑞士、奥地利、意大利北部等国家和地区；</li>
+            <li>BDSee 团队常驻当地，提供真正本地化的服务与建议。</li>
+          </ul>
           <p style="font-size:13px; color:#666;">
-            如果您已经在筹划出海计划，但还没确定从哪个平台或国家开始，我们也欢迎进行一次
-            “交流式沟通”，先从问题梳理和风险判断开始，而不是直接进入大规模合作。
-          </p>
-          <p style="font-size:13px; color:#666;">
-            本页面为中文简介版本，如需德文或英文资料，我们可以根据需要单独提供 PDF 简介或
-            商务方案。
+            想了解更详细的区位分析与地图展示，可以查看
+            <a href="location.html" style="color:var(--primary); text-decoration:underline;">《康斯坦茨区位优势》</a> 页面。
           </p>
         </div>
+        <div style="text-align:center;">
+          <img src="konstanz1.png" alt="Konstanz City"
+               style="max-width:100%; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.15);">
+          <p style="font-size:12px; color:#666; margin-top:6px;">德国康斯坦茨城市风光</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 首页：快速入口 -->
+  <section>
+    <div class="section-inner">
+      <h2 class="section-title">快速了解 BDSee</h2>
+      <p class="section-subtitle">根据您的关注点，选择一个入口继续查看详细信息</p>
+
+      <div class="quick-links">
+        <div class="quick-link-card">
+          <h3>了解详细业务与服务组合</h3>
+          <p>查看海外仓、物流与电商平台相关服务的完整介绍，以及适合的合作方式与阶段。</p>
+          <a href="services.html">进入“我们的业务” →</a>
+        </div>
+        <div class="quick-link-card">
+          <h3>查看仓库照片与运营标准</h3>
+          <p>了解仓库实景、操作流程与安全管理方式，判断是否符合作为您的海外仓合作伙伴。</p>
+          <a href="warehouse.html">进入“海外仓与仓储” →</a>
+        </div>
+        <div class="quick-link-card">
+          <h3>从中国到康斯坦茨的完整路径</h3>
+          <p>清晰了解工厂 → 中国港口 → 欧洲港口 → 陆运 → 康斯坦茨仓库的示意流程与时间节点。</p>
+          <a href="logistics.html">进入“物流流程” →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 首页：简版联系信息 -->
+  <section>
+    <div class="section-inner">
+      <h2 class="section-title">想进一步了解？</h2>
+      <p class="section-subtitle">欢迎用中文、英文或德文与我们联系</p>
+      <p style="font-size:14px;">
+        <strong>公司：</strong>BDSee International Handels GmbH<br>
+        <strong>地址：</strong>Karl-Einhart-Str. 4, 78467 Konstanz, Germany<br>
+        <strong>电话：</strong>+49 172 526 6484<br>
+        <strong>邮箱：</strong>philliperdbeere@gmail.com
+      </p>
+      <p style="font-size:13px; color:#666;">
+        如需查看更详细的地图位置、常见问题与联系说明，请访问
+        <a href="contact.html" style="color:var(--primary); text-decoration:underline;">《联系我们》</a> 页面。
+      </p>
     </div>
   </section>
 
   <footer>
     BDSee International Handels GmbH © 版权所有 · 本页面为中文信息展示，不构成法律或税务建议
   </footer>
+
+  <!-- 右下角悬浮联系按钮 -->
+  <a href="https://wa.me/491725266484" 
+     class="floating-contact" target="_blank" rel="noopener">
+    <div class="fc-main">聊聊合作</div>
+    <div class="fc-sub">WhatsApp / WeChat: +49 172 526 6484</div>
+  </a>
 </body>
 </html>
