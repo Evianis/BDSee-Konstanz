@@ -49,13 +49,43 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* 头图区域 */
+
+/* 头图区域：深色科技感背景，保证文字清晰 */
 .hero {
-  background: radial-gradient(circle at 0% 0%, #1a5a8a 0%, #0b3c5d 35%, #143f69 60%, #ffffff 60%);
-  color: #fff;
-  padding: 60px 20px 40px;
+  /* 头图背景光效装饰 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,0.05) 0, transparent 55%);
+  pointer-events: none;
 }
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 0 40px rgba(0,188,255,0.35);
+  pointer-events: none;
+}
+
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 0%, #1f6fb8 0%, #0b3c5d 35%, #020b18 100%);
+  color: #fff;
+  padding: 70px 20px 50px;
+}
+
 .hero-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
@@ -63,15 +93,20 @@ nav a:hover {
   gap: 30px;
   align-items: center;
 }
+
 .hero h1 {
   font-size: 30px;
   margin: 0 0 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.55);
 }
+
 .hero p {
   font-size: 15px;
-  opacity: 0.95;
+  opacity: 0.96;
   margin: 0 0 16px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.45);
 }
+
 .badge {
   display: inline-block;
   background: rgba(0,0,0,0.18);
