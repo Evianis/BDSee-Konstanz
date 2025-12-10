@@ -1,9 +1,31 @@
 :root {
-  --primary: #0b3c5d;
-  --primary-light: #f5f7fa;
-  --accent: #f5a623;
-  --text: #333;
+  /* 基础色（明亮模式下） */
+  --color-bg: #ffffff;
+  --color-bg-soft: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-text: #222;
+  --color-muted: #777;
+
+  /* 品牌主色 */
+  --brand-primary: #0b3c5d;
+  --brand-primary-soft: #133f69;
+  --brand-accent: #f5a623;
+  --brand-accent-soft: #ffe4b0;
+  --brand-accent-2: #00a0ff;
+
+  /* 统一圆角、阴影 */
+  --radius-lg: 16px;
+  --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
 }
+
+/* 兼容你之前用到的变量名 */
+:root {
+  --primary: var(--brand-primary);
+  --primary-light: var(--color-bg-soft);
+  --accent: var(--brand-accent);
+  --text: var(--color-text);
+}
+
 * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -50,25 +72,25 @@ nav a:hover {
 }
 
 
-/* 头图区域：深色科技感背景，保证文字清晰 */
-/* 头图区域：深色科技感背景 */
+/* 头图区域：深色科技感背景 + 粒子 + 旋转光圈 */
 .hero {
   position: relative;
   overflow: hidden;
 
-  /* 深色科技风渐变背景 */
-  background: linear-gradient(
-      135deg,
-      #061522 0%,   /* 深黑蓝 */
-      #0b2d47 35%,  /* 深蓝 */
-      #1a5fa8 100%  /* 科技蓝 */
-  );
+  /* 叠加粒子层 + 渐变层 */
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.12) 0, transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(0,188,255,0.30) 0, transparent 55%),
+    linear-gradient(135deg, #061522 0%, #0b2d47 35%, #1a5fa8 100%);
+
+  background-size: 220% 220%, 220% 220%, 100% 100%;
+  animation: heroBgDrift 40s ease-in-out infinite;
 
   color: #ffffff;
   padding: 80px 20px 80px;
 }
 
-/* 内容层保持独立 */
+/* 内容区域 */
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -80,24 +102,38 @@ nav a:hover {
   align-items: center;
 }
 
-/* 标题清晰发光，专业感强 */
+/* 标题：更粗、更亮一点 */
 .hero h1 {
   font-size: 32px;
   margin: 0 0 12px;
   font-weight: 700;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.55), 
+  text-shadow: 0 4px 15px rgba(0,0,0,0.55),
                0 0 12px rgba(255,255,255,0.35);
 }
 
-/* 副标题增强可读性 */
+/* 副标题：提高对比度 */
 .hero p {
   font-size: 16px;
-  opacity: 0.95;
+  opacity: 0.97;
   margin: 0 0 18px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
-/* 科技光效 — 右侧蓝色能量环 */
+/* 左上角柔和白光 */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: -120px;
+  top: -120px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 右侧科技感光圈 —— 缓慢旋转 */
 .hero::after {
   content: "";
   position: absolute;
@@ -105,14 +141,17 @@ nav a:hover {
   top: 50%;
   width: 380px;
   height: 380px;
-  transform: translateY(-50%);
   border-radius: 50%;
   border: 2px solid rgba(0,170,255,0.25);
-  box-shadow: 0 0 120px rgba(0,160,255,0.45),
-              inset 0 0 80px rgba(0,160,255,0.25);
+  box-shadow:
+    0 0 120px rgba(0,160,255,0.45),
+    inset 0 0 80px rgba(0,160,255,0.25);
   pointer-events: none;
   z-index: 1;
+  transform: translateY(-50%);
+  animation: heroHaloRotate 42s linear infinite;
 }
+
 
 /* 左上角科技白光 */
 .hero::before {
@@ -149,17 +188,38 @@ nav a:hover {
   border: none;
   cursor: pointer;
   margin-right: 10px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
+
 .btn-primary {
-  background: var(--accent);
+  background: var(--brand-accent);
   color: #000;
   font-weight: 600;
+  box-shadow: 0 6px 16px rgba(245,166,35,0.35);
 }
+.btn-primary:hover {
+  background: #ffb938;
+  box-shadow:
+    0 0 18px rgba(255,185,56,0.85),
+    0 8px 22px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
+}
+
 .btn-outline {
   border: 1px solid #fff;
   color: #fff;
   background: transparent;
 }
+.btn-outline:hover {
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 0 14px rgba(255,255,255,0.55);
+  transform: translateY(-2px);
+}
+
 .hero-card {
   background: #fff;
   color: #000;
@@ -384,25 +444,85 @@ footer {
   font-size:13px;
 }
 
-/* 响应式 */
-@media (max-width: 768px) {
-  .hero-inner, .contact-box {
-    grid-template-columns: 1fr;
+/* 背景缓慢流动（粒子轻微飘动感） */
+@keyframes heroBgDrift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 0 0;
   }
-  .hero {
-    background: var(--primary);
+  50% {
+    background-position: 50% 50%, 50% 20%, 0 0;
   }
-  nav { display: none; } /* 可以后续再做手机导航菜单 */
-  .logistics-steps {
-    flex-direction:column;
-  }
-  .floating-contact {
-    right:12px;
-    bottom:12px;
-    font-size:12px;
-    padding:8px 12px;
-  }
-  .floating-contact .fc-sub {
-    display:none;
+  100% {
+    background-position: 0% 0%, 100% 0%, 0 0;
   }
 }
+
+/* 光圈缓慢旋转一圈 */
+@keyframes heroHaloRotate {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+/* 根据系统偏好自动切换暗色模式 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #050b12;
+    --color-bg-soft: #050f18;
+    --color-surface: #0e1722;
+    --color-text: #f5f7fa;
+    --color-muted: #a3b3c5;
+
+    --brand-primary: #1a74c8;
+    --brand-primary-soft: #11426f;
+    --brand-accent: #f5a623;
+    --brand-accent-2: #28c3ff;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  header {
+    background: rgba(5,17,30,0.96);
+  }
+
+  section:nth-of-type(odd) {
+    background: var(--color-bg-soft);
+  }
+
+  .card,
+  .hero-card {
+    background: var(--color-surface);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  }
+
+  footer {
+    background: #050910;
+    color: #9aa5b5;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner,
+  .contact-box {
+    grid-template-columns: 1fr;
+  }
+  nav { display: none; } /* 以后有空我们可以弄一个手机菜单 */
+  .logistics-steps {
+    flex-direction: column;
+  }
+  .floating-contact {
+    right: 12px;
+    bottom: 12px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  .floating-contact .fc-sub {
+    display: none;
+  }
+}
+
