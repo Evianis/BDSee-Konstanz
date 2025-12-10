@@ -106,16 +106,12 @@ nav a:hover {
   overflow: hidden;
   padding: 80px 20px 80px;
 
-  /* Apple 风淡雅蓝色渐变 */
-  background: linear-gradient(
-    135deg,
-    #e8f1ff 0%,
-    #f7faff 30%,
-    #ffffff 60%
-  );
+  /* 更明显的高级蓝色渐变背景 */
+  background: radial-gradient(circle at 0% 0%, #d3e3ff 0%, #e6f0ff 35%, #f7f9ff 70%, #ffffff 100%);
 
   color: #1a1a1a;
 }
+
 
 
 .hero-inner {
