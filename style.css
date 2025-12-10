@@ -221,23 +221,29 @@ nav a:hover {
 }
 
 .hero-card {
-  background: #fff;
-  color: #000;
+  background: rgba(255,255,255,0.08); /* 半透明白，让深色背景上更科技感 */
+  color: #f0f6ff;                    /* 亮白带微蓝，适合深蓝背景 */
   border-radius: 16px;
   padding: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  font-size: 13px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  font-size: 14px;
+  backdrop-filter: blur(12px);       /* 玻璃拟态效果更高级 */
 }
 .hero-card h3 {
   margin-top: 0;
   margin-bottom: 8px;
-  font-size: 16px;
-  color: var(--primary);
+  font-size: 18px;
+  color: #ffffff;                    /* 标题亮白 */
+  font-weight: 700;
 }
 .hero-card ul {
   padding-left: 18px;
   margin: 6px 0;
 }
+.hero-card li {
+  color: #cfe3ff;                    /* 稍浅蓝色 → 更舒适可读 */
+}
+
 
 /* 通用 section */
 section {
