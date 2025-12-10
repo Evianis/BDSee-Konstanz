@@ -60,43 +60,89 @@ a {
 }
 
 /* =========================
-   顶部导航：白色半透明 + 轻阴影
+   顶部导航：极光银玻璃导航条
    ========================= */
 header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(245,245,247,0.9);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  background: linear-gradient(
+    180deg,
+    rgba(248,250,252,0.92) 0%,
+    rgba(237,240,246,0.96) 100%
+  );
+
+  border-bottom: 1px solid rgba(200,210,230,0.55);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7),
+    0 18px 40px rgba(15,23,42,0.06);
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 10px 0;
+  min-height: 52px;
 }
 
 .logo {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #111111;
+  letter-spacing: 0.03em;
+  color: #101827;
+  white-space: nowrap;
 }
 
+/* 右侧导航区域 */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 基础导航条目样式 */
 nav a {
-  color: #1d1d1f;
-  margin-left: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 13px;
+  border-radius: 999px;
+
   font-size: 14px;
-  opacity: 0.85;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  color: #1f2933;
+  opacity: 0.9;
+
+  text-decoration: none;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease;
 }
 
+/* hover：轻微高亮 + 胶囊感 */
 nav a:hover {
+  background: rgba(255,255,255,0.9);
+  color: #0f172a;
   opacity: 1;
-  color: var(--brand-primary);
+  box-shadow: 0 6px 14px rgba(15,23,42,0.12);
+  transform: translateY(-1px);
 }
+
+/* 当前页面高亮（需要在 HTML 中给当前链接加 .nav-active） */
+nav a.nav-active {
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow:
+    0 0 0 1px rgba(148,163,184,0.4),
+    0 10px 22px rgba(15,23,42,0.12);
+}
+
 
 /* =========================
    Hero：蓝色光晕 + 科技质感
