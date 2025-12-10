@@ -853,40 +853,58 @@ body::after {
   box-shadow: 0 22px 45px rgba(5, 20, 60, 0.18);
 }
 
-/* 轮播背景层：放在渐变上面 */
-.hero-konz::after {
-  content: "";
+/* 顶部 Konstanz 搜索区域外壳 */
+.hero-konz {
+  position: relative;
+  width: 100%;
+  border-radius: 0 0 32px 32px;
+  overflow: hidden;
+
+  /* 整块区域本身的“银色”基底光 */
+  background:
+    radial-gradient(circle at 10% 0%, rgba(135,170,255,0.35) 0, transparent 55%),
+    radial-gradient(circle at 90% 40%, rgba(110,160,255,0.32) 0, transparent 60%),
+    linear-gradient(180deg, rgba(245,247,252,0.96) 0%, rgba(232,238,248,0.98) 45%, #f5f7fb 100%);
+
+  box-shadow: 0 22px 45px rgba(5, 20, 60, 0.18);
+}
+
+/* 真正负责显示 Konstanz 背景图的层 */
+.hero-konz-bg {
   position: absolute;
   inset: 0;
-  z-index: 0; /* 在内容后面，但在 body 背景前面 */
+  z-index: 0;
+  pointer-events: none;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: heroBgSlide 10.5s infinite; /* 3 张图 × 3.5 秒 = 10.5 秒一轮 */
-  opacity: 1;
+
+  /* 轮播动画：3 张图，每张约 3.5 秒 */
+  animation: heroBgSlide 10.5s infinite;
+  opacity: 0.9;  /* 可以按喜好调深浅 */
 }
 
-/* 背景轮播关键帧：每 3.5 秒切一张 */
+/* 轮播关键帧（根据你的文件名改路径即可） */
 @keyframes heroBgSlide {
-
-  /* 第 1 张：0s ~ 3.5s */
-  0%   { background-image: url("konstanz1.png"); opacity: 1; }
-  28%  { background-image: url("konstanz1.png"); opacity: 1; }
-
-  /* 过渡到第 2 张：3.5s ~ 7s */
-  33%  { background-image: url("st.png"); opacity: 0.45; }
-  61%  { background-image: url("st.png"); opacity: 1; }
-
-  /* 过渡到第 3 张：7s ~ 10.5s */
-  66%  { background-image: url("kache.jpg"); opacity: 0.45; }
-  95%  { background-image: url("kache.jpg"); opacity: 1; }
-
-  /* 回到第 1 张准备下一轮 */
-  100% { background-image: url("konstanz1.png"); opacity: 1; }
+  0%, 28% {
+    background-image: url("konstanz1.png");
+  }
+  33%, 61% {
+    background-image: url("konstanz2.png");
+  }
+  66%, 95% {
+    background-image: url("konstanz3.png");
+  }
+  100% {
+    background-image: url("konstanz1.png");
+  }
 }
 
-/* 搜索区域标题 */
+/* 里面的文字 & 搜索框要盖在背景上面 */
 .hero-intro {
+  position: relative;
+  z-index: 1;
   padding: 64px 20px 60px;
   text-align: center;
 }
@@ -918,7 +936,7 @@ body::after {
   max-width: 520px;
 }
 
-/* 玻璃拟态 + 粒子 + 光线扫描壳 */
+/* 玻璃拟态 + 粒子 + 光线扫描壳（保持你现在的即可） */
 .search-shell {
   position: relative;
   display: flex;
@@ -935,7 +953,7 @@ body::after {
   overflow: hidden;
 }
 
-/* 背景粒子漂浮 */
+/* 粒子漂浮 */
 .search-shell::before {
   content: "";
   position: absolute;
@@ -969,7 +987,7 @@ body::after {
   pointer-events: none;
 }
 
-/* 输入框本体 */
+/* 输入框 */
 .search-shell input {
   position: relative;
   z-index: 1;
@@ -986,7 +1004,7 @@ body::after {
   color: #a0a4b0;
 }
 
-/* 搜索按钮：蓝色胶囊 */
+/* 搜索按钮 */
 .search-shell button {
   position: relative;
   z-index: 1;
@@ -1010,28 +1028,18 @@ body::after {
 
 /* 粒子动画 */
 @keyframes heroParticles {
-  0% {
-    transform: translate3d(-10px, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(10px, -6px, 0) scale(1.02);
-  }
-  100% {
-    transform: translate3d(-6px, 4px, 0) scale(1.01);
-  }
+  0%   { transform: translate3d(-10px, 0, 0) scale(1); }
+  50%  { transform: translate3d(10px, -6px, 0) scale(1.02); }
+  100% { transform: translate3d(-6px, 4px, 0) scale(1.01); }
 }
 
 /* 光线扫描动画 */
 @keyframes heroLightScan {
-  0% {
-    transform: translateX(-140%);
-  }
-  100% {
-    transform: translateX(220%);
-  }
+  0%   { transform: translateX(-140%); }
+  100% { transform: translateX(220%); }
 }
 
-/* 手机端搜索标题略缩小 */
+/* 手机端标题略缩小 */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 24px;
